@@ -1,24 +1,23 @@
-const express = require('express');
-const jobRoutes = require('./routes/jobRoutes');
-const userRoutes = require('./routes/userRoutes');
-const recruiterRoutes = require('./routes/recruiterRoutes');
-const corsMiddleware = require('./corsMiddleware');
-const sequelize = require('./models/index');
+import express from 'express';
+import { jobRoutes } from './routes/job.routes.js';
+// import userRoutes from './routes/userRoutes.js';
+// import recruiterRoutes from './routes/recruiterRoutes.js';
+// import corsMiddleware from './corsMiddleware.js';
+import { tryConnectSequelize } from './database/db.js';
 
-const app = express();
-app.use(express.json());
-app.use(corsMiddleware);
+const port = process.env.PORT || 4000;
+const server = express();
+
+server.use(express.json());
+// server.use(corsMiddleware);
 
 
-app.use(jobRoutes);
-app.use(userRoutes);
-app.use(recruiterRoutes);
+server.use(jobRoutes);
+// server.use(userRoutes);
+// server.use(recruiterRoutes);
 
-sequelize.sync()
-  .then(() => console.log('Banco sincronizado'))
-  .catch(err => console.error('Erro ao sincronizar o banco:', err));
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+server.listen(port, () => {
+  tryConnectSequelize();
+  console.log(`Servidor rodando na porta http://localhost:${port}`);
 });
