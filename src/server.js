@@ -1,7 +1,7 @@
 import express from 'express';
 import { jobRoutes } from './routes/job.routes.js';
 // import userRoutes from './routes/userRoutes.js';
-// import recruiterRoutes from './routes/recruiterRoutes.js';
+import { recruiterRoutes } from './routes/recruiter.routes.js';
 // import corsMiddleware from './corsMiddleware.js';
 import { tryConnectSequelize } from './database/db.js';
 
@@ -14,7 +14,7 @@ server.use(express.json());
 
 server.use(jobRoutes);
 // server.use(userRoutes);
-// server.use(recruiterRoutes);
+ server.use(recruiterRoutes);
 
 
 server.listen(port, () => {
