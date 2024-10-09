@@ -1,18 +1,30 @@
 import { Job } from '../models/job.model.js';
 
 const listJobs = async (req, res) => {
-  const jobs = await Job.findAll();
-  res.json(jobs);
+  try {
+    const jobs = await Job.findAll();
+    res.json(jobs);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao listar vagas' });
+  }
 };
 
-// exports.createJob = async (req, res) => {
-//   const newJob = await Job.create(req.body);
-//   res.json(newJob);
-// };
+const createJob = async (req, res) => {
+  try {
+    const newJob = await Job.create(req.body);
+    res.status(201).json(newJob);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao criar vaga' });
+  }
+};
 
-// exports.deleteJob = async (req, res) => {
-//   await Job.destroy({ where: { id: req.params.id } });
-//   res.sendStatus(204);
-// };
+const deleteJob = async (req, res) => {
+  try {
+    await Job.destroy({ where: { id: req.params.id } });
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao deletar vaga' });
+  }
+};
 
-export { listJobs }
+export { listJobs, createJob, deleteJob };
