@@ -1,7 +1,7 @@
 # TechNBlack ✊🏿
 
 ## Description
-According to the 2020 IBGE Census, only 29% of workers in the information and communication technology (ICT) sector in Brasil identify as black, while 71% identify as white. These numbers highlight the racial inequality present in the sector and emphasize the urgent need for initiatives that promote inclusion.
+Racial inequality in the Brazilian labor market is widely documented, revealing a significant difference between Black and non-Black individuals in terms of opportunities, income, and working conditions. These inequalities are a result of a historical context of exclusion, reinforced by the lack of effective public policies to combat institutional racism.
 
 The inclusion of black people in the tech industry goes beyond social equity it represents an opportunity for innovation and growth for companies.
 
@@ -50,9 +50,9 @@ npm start
 
 The server will be running on port 4000.
 
-## Endpoints da API
+## API Endpoints
 
-### Vagas
+### Jobs
 
 Method| Description | Endpoint
 ---|---|---
@@ -61,7 +61,7 @@ Method| Description | Endpoint
 `DELETE`| Delete Job by ID | `/jobs/:id`
 
 * Body POST
-```
+``` sql
 {
   "nome": varchar(255),
   "cargo": varchar(255),
@@ -74,7 +74,7 @@ Method| Description | Endpoint
 }
 ```
 
-### Recrutadores
+### Recruiters
 
 Method| Description | Endpoint
 ---|---|---
@@ -83,11 +83,30 @@ Method| Description | Endpoint
 `DELETE`| Delete Recruiter by ID | `/recruiters/:id`
 
 * Body POST
-```
+``` sql
 {
   "nome": varchar(255),
   "empresa": varchar(255),
   "contato": varchar(100),
+}
+```
+### Users
+
+Method| Description | Endpoint
+---|---|---
+`POST`| Create User | `/Users`
+`GET`| List Users | `/Users`
+`DELETE`| Delete User by ID | `/users/:id`
+
+* Body POST
+``` sql
+{
+  "nome": varchar(255),
+  "formacao": varchar(255),
+  "endereco": varchar(255),
+  "pretensao salarial": decimal(10,2),
+  "contato": varchar(100),
+  "data de nascimento": date
 }
 ```
 
