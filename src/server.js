@@ -1,6 +1,6 @@
 import express from 'express';
 import { jobRoutes } from './routes/job.routes.js';
-import { userRoutes } from './routes/userRoutes.js';
+import { userRoutes } from './routes/user.routes.js';
 import { recruiterRoutes } from './routes/recruiter.routes.js';
 import corsMiddleware from './middlewares/corsMiddleware.js';
 import { tryConnectSequelize } from './database/db.js';
