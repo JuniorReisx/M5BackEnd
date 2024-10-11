@@ -1,10 +1,12 @@
 import { Sequelize } from "sequelize";
+import 'dotenv/config'
 
-const database = new Sequelize(process.env.DATABASE_URL, {
+const database = new Sequelize(process.env.DATABASE_URL , {
   dialect: "postgres",
 });
 
 const tryConnectSequelize = async () => {
+  
   try {
     await database.authenticate();
     await database.sync({ logging: false });
