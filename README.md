@@ -39,7 +39,7 @@ Create the .env file and configure the DATABASE_URL variable with the database i
 
 ```
 DATABASE_URL='postgresql://postgres.agpfutrpnjoxdzitbslu:@M5BackEnd123@aws-0-us-west-1.pooler.supabase.com:6543/postgres'
-PORT='4000
+PORT='4000'
 ```
 
 ### Start the server
