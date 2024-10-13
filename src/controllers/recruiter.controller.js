@@ -18,6 +18,31 @@ const createRecruiter = async (req, res) => {
   }
 };
 
+const updateRecruiter = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const { nome, empresa, contato } = req.body;
+
+    const [updated] = await Recruiter.update(
+      { nome, empresa, contato },
+      { where: { id: id }, returning: true }
+    );
+
+    if (updated) {
+      const updatedUser = await Recruiter.findOne({ where: { id: id } });
+      return res.status(200).json(updatedUser);
+    }
+
+    return res.status(404).json({ error: 'User not found' });
+    
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Failed to update user' });
+  }
+};
+
+
 const deleteRecruiter = async (req, res) => {
   try {
     await Recruiter.destroy({ where: { id: req.params.id } });
@@ -27,4 +52,4 @@ const deleteRecruiter = async (req, res) => {
   }
 };
 
-export { listRecruiters, createRecruiter, deleteRecruiter };
+export { listRecruiters, createRecruiter, deleteRecruiter, updateRecruiter };

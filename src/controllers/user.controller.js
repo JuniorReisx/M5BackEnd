@@ -19,27 +19,30 @@ const createUser = async (req, res) => {
   }
 };
 
+
 const updateUser = async (req, res) => {
-  const { userId } = req.params;
+  const { id } = req.params;
 
   try {
     const { nome, formacao, endereco, pretensaoSalarial, contato, dataDeNascimento } = req.body;
 
-
     const [updated] = await User.update(
       { nome, formacao, endereco, pretensaoSalarial, contato, dataDeNascimento },
-      { where: { id: userId }, returning: true }
+      { where: { id: id }, returning: true }
     );
 
-    const updatedUser = await User.findOne({ where: { id: userId } });
-    return res.status(200).json(updatedUser);
+    if (updated) {
+      const updatedUser = await User.findOne({ where: { id: id } });
+      return res.status(200).json(updatedUser);
+    }
 
+    return res.status(404).json({ error: 'User not found' });
+    
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Failed to update user' });
   }
 };
-
 
 const deleteUser = async (req, res) => {
   try {

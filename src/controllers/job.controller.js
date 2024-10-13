@@ -18,6 +18,31 @@ const createJob = async (req, res) => {
   }
 };
 
+const updateJob = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const { nome, cargo, nivel, empresa, quantidade, salario, localizacao, descricao } = req.body;
+
+    const [updated] = await Job.update(
+      { nome, cargo, nivel, empresa, quantidade, salario, localizacao, descricao },
+      { where: { id: id }, returning: true }
+    );
+
+    if (updated) {
+      const updatedJob = await Job.findOne({ where: { id: id } });
+      return res.status(200).json(updatedJob);
+    }
+
+    return res.status(404).json({ error: 'Job not found' });
+    
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Failed to update job' });
+  }
+};
+
+
 const deleteJob = async (req, res) => {
   try {
     await Job.destroy({ where: { id: req.params.id } });
@@ -27,4 +52,4 @@ const deleteJob = async (req, res) => {
   }
 };
 
-export { listJobs, createJob, deleteJob };
+export { listJobs, createJob, deleteJob, updateJob };
