@@ -21,7 +21,7 @@ const createJob = async (req, res) => {
 const deleteJob = async (req, res) => {
   try {
     await Job.destroy({ where: { id: req.params.id } });
-    res.sendStatus(204);
+    return res.status(204).json('sucess')
   } catch (error) {
     res.status(500).json({ error: 'Erro ao deletar vaga' });
   }

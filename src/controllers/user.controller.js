@@ -19,13 +19,35 @@ const createUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const { nome, formacao, endereco, pretensaoSalarial, contato, dataDeNascimento } = req.body;
+
+
+    const [updated] = await User.update(
+      { nome, formacao, endereco, pretensaoSalarial, contato, dataDeNascimento },
+      { where: { id: userId }, returning: true }
+    );
+
+    const updatedUser = await User.findOne({ where: { id: userId } });
+    return res.status(200).json(updatedUser);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Failed to update user' });
+  }
+};
+
+
 const deleteUser = async (req, res) => {
   try {
     await User.destroy({ where: { id: req.params.id } });
-    res.sendStatus(204);
+    return res.status(204).json('sucess')
   } catch (error) {
     res.status(500).json({ error: 'Erro ao deletar usuário' });
   }
 };
 
-export { listUsers, createUser, deleteUser };
+export { listUsers, createUser, deleteUser, updateUser };
