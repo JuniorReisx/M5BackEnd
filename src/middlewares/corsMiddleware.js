@@ -1,7 +1,7 @@
 import cors from 'cors';
 
 const corsOptions = {
-  origin: '*',
+  origin: 'https://m5-front-end-psi.vercel.app', 
   methods: ['GET', 'POST','PUT','DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
