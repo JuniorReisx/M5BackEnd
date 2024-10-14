@@ -9,6 +9,8 @@ Diversity should not only be a moral priority, but also a business strategy. It 
 
 In this context, TechNBlack emerges, the final project from the Programadores do Amanhã training program. It is an API designed to manage tech job opportunities specifically for black individuals. The platform was developed as an inclusive solution, facilitating access to job opportunities and promoting greater diversity in the tech sector.
 
+![image](https://github.com/user-attachments/assets/1bc61b11-0ddc-4b1a-b00e-2950201e3a28)
+
 ## Features
 Allows listing, creating, and deleting job openings, recruiters, and users.
 
@@ -47,8 +49,13 @@ PORT='4000'
 ```
 npm start
 ```
-
 The server will be running on port 4000.
+
+### The deployment
+
+You can also use the deploy
+
+https://m5backend-322f.onrender.com/
 
 ## API Endpoints
 
@@ -58,6 +65,7 @@ Method| Description | Endpoint
 ---|---|---
 `POST`| Create Job | `/jobs`
 `GET`| List Jobs | `/jobs`
+`PUT`| Update Job by ID | `/jobs/:id`
 `DELETE`| Delete Job by ID | `/jobs/:id`
 
 * Body POST
@@ -80,6 +88,7 @@ Method| Description | Endpoint
 ---|---|---
 `POST`| Create Recruiter| `/recruiters`
 `GET`| List Recruiters | `/recruiters`
+`PUT`| Update Recruiter by ID | `/recruiters/:id`
 `DELETE`| Delete Recruiter by ID | `/recruiters/:id`
 
 * Body POST
@@ -94,8 +103,9 @@ Method| Description | Endpoint
 
 Method| Description | Endpoint
 ---|---|---
-`POST`| Create User | `/Users`
-`GET`| List Users | `/Users`
+`POST`| Create User | `/users`
+`GET`| List Users | `/users`
+`PUT`| Update User by ID | `/users/:id`
 `DELETE`| Delete User by ID | `/users/:id`
 
 * Body POST
