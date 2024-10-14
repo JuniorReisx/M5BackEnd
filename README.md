@@ -9,8 +9,7 @@ Diversity should not only be a moral priority, but also a business strategy. It 
 
 In this context, TechNBlack emerges, the final project from the Programadores do Amanhã training program. It is an API designed to manage tech job opportunities specifically for black individuals. The platform was developed as an inclusive solution, facilitating access to job opportunities and promoting greater diversity in the tech sector.
 
-![image](https://github.com/user-attachments/assets/44871aa3-5819-44f3-938d-3a16ad161124)
-
+![image](https://github.com/user-attachments/assets/1bc61b11-0ddc-4b1a-b00e-2950201e3a28)
 
 ## Features
 Allows listing, creating, and deleting job openings, recruiters, and users.
